@@ -1,0 +1,15 @@
+module.exports = {
+  SUCCESS_REGISTRATION: "User Registration Process Done Successfully",
+  EXISTING_EMAIL: "Email Already Exists",
+  INTERNAL_SERVER_ERROR: "Something Went Wrong",
+  EMAIL_NOT_REGISTERED: "Email Not Registered",
+  RECIPIENT_NOT_REGISTERED: "Recipient Not Registered",
+  INVALID_PASSWORD: "Invalid Password",
+  EMAIL_FOUND: "Email Found Successfully",
+  MAIL_SENT: "Mail Sent Successfully",
+  CONFIRM_PASSWORD_MISMATCHED: "Password and Confirm Password are not same",
+  TOKEN_NOT_VALID: "Please Login Once Again",
+  SUCCESS_UPDATE_USER_PROFILE: "Profile Updated Successfully",
+  SUCCESS_UPDATE_USER_PASSWORD: "Password Updated Successfully",
+  MAIL_DELETED: "Mail Successfully Deleted",
+};
