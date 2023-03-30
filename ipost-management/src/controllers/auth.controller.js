@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const httpStatus = require("http-status");
 const { createResponseData } = require("../utils/response");
 const constant = require("../utils/constants");
-const { signToken } = require("../middleware/Tokenauth");
 
 const register = async (req, res) => {
   try {
@@ -47,7 +46,6 @@ const login = async (req, res) => {
   try {
     let { email, password } = req.body;
     const user = await Users.findOne({ email: email });
-
     if (!user) {
       return createResponseData(
         res,
@@ -76,16 +74,24 @@ const login = async (req, res) => {
         userEmail: user.email,
       },
       process.env.SECRET_KEY
+      // { expiresIn: "5h" }
+      //Date.now + 5 hours
     );
+
+    // const Token = { token: token, tokenExpiry: "10s" };
+    // user.token = Token;
+    // await user.save();
 
     const data = {
       userId: user._id,
-      userName: user.firstName,
+      userFirstName: user.firstName,
+      userLastName: user.lastName,
       userEmail: user.email,
       token: token,
     };
     return createResponseData(res, data, httpStatus.OK, false, {});
   } catch (error) {
+    console.log(error);
     return createResponseData(
       res,
       {},

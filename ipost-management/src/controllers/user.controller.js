@@ -8,8 +8,13 @@ const constant = require("../utils/constants");
 const updateUserProfile = async (req, res) => {
   try {
     const id = req.params.id;
+    // console.log(req.body);
     const { firstName, lastName } = req.body;
     const user = await Users.findById({ _id: id });
+    // const user = await Users.findByIdAndUpdate(
+    //   { _id: id },
+    //   { firstName: firstName, lastName: lastName }
+    // );
 
     if (!user) {
       return createResponseData(
@@ -21,6 +26,8 @@ const updateUserProfile = async (req, res) => {
       );
     }
 
+    // user.firstName = firstName;
+    // user.lastName = lastName;
     user.firstName =
       firstName.charAt(0).toUpperCase() + "" + firstName.slice(1);
     user.lastName = lastName.charAt(0).toUpperCase() + "" + lastName.slice(1);
@@ -48,19 +55,42 @@ const updateUserProfile = async (req, res) => {
 const changePassword = async (req, res) => {
   try {
     const id = req.params.id;
-    const { password } = req.body;
-    const changePass = await Users.findById({ _id: id });
+    const { oldPassword, password } = req.body;
+    const user = await Users.findById({ _id: id });
+
+    if (!user) {
+      return createResponseData(
+        res,
+        {},
+        httpStatus.NOT_FOUND,
+        true,
+        constant.USER_NOT_FOUND
+      );
+    }
+
+    const passwordMatches = await bcrypt.compare(oldPassword, user.password);
+
+    if (!passwordMatches) {
+      return createResponseData(
+        res,
+        {},
+        httpStatus.BAD_REQUEST,
+        true,
+        constant.INVALID_OLD_PASSWORD
+      );
+    }
 
     if (password) {
       const hashedPassword = await bcrypt.hash(password, 10);
-      changePass.password = hashedPassword;
+      user.password = hashedPassword;
     }
 
-    const updatedPassword = await changePass.save();
+    const updatedUser = await user.save();
 
     return createResponseData(
       res,
-      { updatedPassword },
+      {},
+      // { user: updatedUser },
       httpStatus.OK,
       false,
       constant.SUCCESS_UPDATE_USER_PASSWORD

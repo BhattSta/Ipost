@@ -1,0 +1,406 @@
+body {
+    background-color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* Main Page */
+
+.mainPage {
+    font-family: "Rowdies", cursive;
+    margin-top: 12%;
+    margin-right: 6%;
+}
+.buttons {
+    position: absolute;
+    padding: 4px 24px 4px 24px;
+    border-radius: 45px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background: #8d5dfc;
+    text-align: center;
+    color: #ffffff;
+}
+.mainPage button:hover {
+    background: rgb(112, 66, 218);
+    color: #ffffff;
+}
+.mainPage h1 {
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-top: 100px;
+}
+.mainPage span {
+    color: #8d5dfc;
+}
+.mainPage p {
+    color: #a4a4a4;
+}
+.mainPage img {
+    width: 120%;
+    height: 110%;
+}
+
+/* Registration page */
+.register {
+    background-color: #f8f6ff;
+    width: 50%;
+    border-radius: 30px;
+    margin: auto;
+}
+.twoInputs {
+    margin-left: 6%;
+    margin-right: 6%;
+}
+.register form {
+    padding-top: 5%;
+}
+.regPara {
+    color: #8d5dfc;
+    width: 50%;
+    margin: auto;
+}
+.register form input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid grey;
+    border-radius: 0px;
+    font-weight: 600;
+    width: 80%;
+    margin: auto;
+}
+.register form input::placeholder {
+    font-weight: bold;
+    font-size: 14px;
+}
+.register form input:focus {
+    background-color: transparent;
+    font-weight: 600;
+    outline: none; /* oranges! yey */
+}
+
+.register form button {
+    background-color: #8d5dfc;
+    color: white;
+    border: transparent;
+    border-radius: 30px;
+    padding-right: 8%;
+    padding-left: 8%;
+    font-weight: 600;
+}
+
+.register form button:hover {
+    background-color: #6c31f5;
+    color: white;
+    border: transparent;
+    border-radius: 30px;
+    padding-right: 8%;
+    padding-left: 8%;
+}
+/* Navbar css */
+.navbar {
+    background-color: #8d5dfc;
+    color: white;
+}
+.navbar a img {
+    height: 40%;
+    width: 40%;
+}
+.navbar ul li img {
+    height: 90%;
+    width: 80%;
+    cursor: pointer;
+}
+/* Navbar End */
+
+/* Section css */
+section {
+    background-color: #f8f5ff;
+    min-height: calc(100vh - 60px);
+}
+ul {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+li {
+    list-style-type: none;
+}
+.demo {
+    min-height: calc(100vh - 70px);
+    padding-top: 1%;
+    box-sizing: border-box;
+}
+/* Sidebar css */
+.badge {
+    float: right;
+    margin-top: 2px;
+}
+.sideBar {
+    background-color: white;
+    display: block;
+    position: sticky;
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+}
+.sideBar li {
+    cursor: pointer;
+    background-color: #f1ebff;
+    padding: 10px;
+    border: transparent;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.sideBar li:hover {
+    background-color: #9364ff;
+    transition: 0.5s;
+}
+.sideBar li:hover a {
+    color: white;
+}
+.sideBar li a {
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+.sideBar li img {
+    height: 18px;
+}
+.composeBtn {
+    margin: auto 0 10px;
+}
+.messages::-webkit-scrollbar {
+    width: 10px;
+}
+.messages::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+.messages::-webkit-scrollbar-thumb {
+    background-color: #e7dfff;
+    border: 1px solid #e7dfff;
+    border-radius: 10px;
+}
+/* Message Css */
+.messages {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    max-height: calc(100vh - 90px);
+    border-radius: 16px;
+    overflow-y: auto;
+}
+
+/* Card css */
+.card {
+    border: none;
+}
+
+.cardClicked :hover {
+    background-color: rgb(241, 235, 255);
+    cursor: pointer;
+}
+
+.cardContent {
+    display: flex;
+    padding: 20px 20px 0px 20px;
+}
+.cardContent h6 {
+    font-weight: bold;
+}
+.cardContent p {
+    font-weight: bolder;
+    font-size: 12px;
+    color: #4c00ff;
+}
+.cardImg {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: #8d5dfc;
+    overflow: hidden;
+    margin-right: 20px;
+    min-width: 50px;
+}
+.cardImg p {
+    overflow: hidden;
+    height: 50px;
+    font-size: 20px;
+    margin: 10px;
+    position: absolute;
+    color: white;
+}
+.para {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.cardMessage {
+    padding: 0px 10px 0px 22px;
+}
+.cardData {
+    flex: 1;
+}
+/* Active class */
+.active {
+    background-color: #f1ebff;
+}
+
+/* Read message */
+.read h6 {
+    color: #686868;
+}
+.read p {
+    color: #686868;
+}
+.read span {
+    color: #686868;
+}
+
+/* composeClicked */
+.composeClicked {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    max-height: calc(100vh - 90px);
+    border-radius: 16px;
+}
+.composeMessage img {
+    height: 300px;
+}
+.composeMessage span {
+    color: #8d5dfc;
+}
+
+.upperSide {
+    background-color: #e4dafa;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+/* Compose Form */
+.sendForm form input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    border-radius: 0px;
+    font-weight: 600;
+    width: 96%;
+    letter-spacing: 1px;
+    margin: auto;
+}
+.sendForm form input::placeholder {
+    font-weight: bold;
+    font-size: 14px;
+}
+.sendForm form input:focus {
+    background-color: transparent;
+    font-weight: 600;
+    outline: none; /* oranges! yey */
+}
+
+.sendForm form textarea {
+    background-color: transparent;
+    border: none;
+    resize: none;
+    border-radius: 0px;
+    font-weight: 600;
+    padding-left: 20px;
+    width: 96%;
+    letter-spacing: 1px;
+    margin: auto;
+}
+.sendForm form textarea::placeholder {
+    font-weight: bold;
+    font-size: 14px;
+}
+.sendForm form textarea:focus {
+    background-color: transparent;
+    font-weight: 600;
+    outline: none; /* oranges! yey */
+}
+
+.sendForm form button {
+    background-color: #8d5dfc;
+    color: white;
+    border: transparent;
+    margin: auto 10px 0px;
+    border-radius: 30px;
+    padding-right: 3%;
+    padding-left: 3%;
+    position: fixed;
+    bottom: 5%;
+    font-weight: 600;
+}
+
+.sendForm form button:hover {
+    background-color: #6c31f5;
+    color: white;
+}
+.badge {
+    background-color: #c4acfc;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 12px;
+    color: black;
+}
+.createFooter {
+    position: fixed;
+    bottom: 20px;
+    right: 15%;
+}
+.createFooter span {
+    color: #9364ff;
+}
+
+/* Compose Card css */
+.composeCard {
+    border: none;
+}
+.composeCardContent {
+    display: flex;
+    padding: 20px 20px 0px 20px;
+}
+.composeCardContent h6 {
+    font-weight: bold;
+}
+.composeCardContent p {
+    font-weight: bolder;
+    font-size: 12px;
+}
+.composeCardImg {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: #aaa;
+    overflow: hidden;
+    margin-right: 20px;
+    min-width: 50px;
+}
+.composeCardImg img {
+    overflow: hidden;
+    height: 50px;
+}
+.para {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.composeCardMessage {
+    padding: 0px 10px 0px 22px;
+}
+.composeCardData {
+    flex: 1;
+}
+.twoData input[type="file"] {
+    display: none;
+}
+.twoData label {
+    margin-left: 96%;
+    cursor: pointer;
+}
+.twoData label img {
+    height: 24px;
+}

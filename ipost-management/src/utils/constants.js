@@ -12,4 +12,6 @@ module.exports = {
   SUCCESS_UPDATE_USER_PROFILE: "Profile Updated Successfully",
   SUCCESS_UPDATE_USER_PASSWORD: "Password Updated Successfully",
   MAIL_DELETED: "Mail Successfully Deleted",
+  INVALID_OLD_PASSWORD: "Old Password Is Incorrect",
+  USER_NOT_FOUND: "User Not Found",
 };

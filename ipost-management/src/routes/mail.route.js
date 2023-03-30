@@ -49,4 +49,6 @@ router.get("/getTrashedMails", checkToken, mailController.getTrashedMail);
 
 router.patch("/incrementCounter/:id", checkToken, mailController.counter);
 
+// router.post("/downloadAttachments", checkToken, mailController.downloadAttachment);
+
 module.exports = router;

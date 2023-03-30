@@ -1,0 +1,54 @@
+CSS Document 
+----------------
+
+- Browser Reset css
+- Typography css 
+- Form-element css
+
+1. The Basics 
+    > font-size, width, height
+
+2. CSS Box Model 
+    > margin, border, padding
+
+3. Images and Background
+    > <img src="../images/wallpaper.jpg" >
+    > image {   background-image: url(../images/wallpaper.jpg);}
+
+4. Display and Position
+    display: block | inline | inline-block | table | etc
+    position: static | absolute | relative | fixed | sticky
+
+5. Colours, Fonts, lists and Tables
+    >  HEX code, rgb, rgba, transparent etc
+
+6. Pseudo-classes and Combinators
+    >:hover or :visited  :nth-child(2)
+    > .container > p {  color: yellow;}
+
+
+@media (max-width: 600px) {
+ body {
+   background-color: lightblue;
+ }
+}
+
+
+
+Next Level 
+-------------
+
+- Flexbox and Grid 
+- Transforms, transitions and animations 
+
+
+12. Preprocessors 
+    > They enable us to use logic in our CSS code, such as variables, nesting, inheritance, mixins, functions, and mathematical operations. Some of the popular ones are SASS, LESS, STYLUS and POSTCSS.
+
+    > autoprefixer (Post Css) > -moz- and-webkit-.
+
+13. Frameworks >  as Bootstrap, Semantic-UI or Materialize 
+
+14. Specificity > !important 
+
+> demo template > https://preview.colorlib.com/#hepta

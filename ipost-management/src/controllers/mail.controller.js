@@ -3,11 +3,12 @@ const { Mails } = require("../models");
 const httpStatus = require("http-status");
 const { createResponseData } = require("../utils/response");
 const constant = require("../utils/constants");
+// const path = require("path");
+// const mime = require("mime");
+// const fs = require("fs");
 
 const checkToUserEmail = async (req, res) => {
   try {
-    // console.log(req.userData);
-    // console.log(req.userData.userId);
     const email = req.body.email;
     const validEmail = await Users.findOne({ email: email });
     if (validEmail) {
@@ -95,6 +96,7 @@ const getMail = async (req, res) => {
     const unreadMailCount = await Mails.find({
       to: req.userData.userId,
       status: "UNREAD",
+      deleteStatus: "NONE",
     }).count();
 
     const mailData = await Mails.find({
@@ -200,7 +202,7 @@ const deleteMail = async (req, res) => {
     const id = req.params.id;
     const deleteMail = await Mails.findByIdAndUpdate(
       { _id: id },
-      { deleteStatus: "TRASHED", status: "READ", readAt: "" }
+      { deleteStatus: "TRASHED", readAt: "" }
     );
     // console.log(deleteMail);
     if (deleteMail) {
@@ -253,7 +255,6 @@ const getTrashedMail = async (req, res) => {
 const counter = async (req, res) => {
   try {
     const id = req.params.id;
-    // console.log(id);
     const counter = await Mails.findByIdAndUpdate(
       { _id: id },
       { $inc: { counter: 1 } },
@@ -262,7 +263,6 @@ const counter = async (req, res) => {
       }
     );
 
-    // console.log(counter);
     return createResponseData(res, counter, httpStatus.OK, false, {});
   } catch (error) {
     return createResponseData(
@@ -275,6 +275,34 @@ const counter = async (req, res) => {
   }
 };
 
+// const downloadAttachment = async (req, res) => {
+//   try {
+//     const path = `../public/attachments/${req.body.fileName}}`;
+//     const fileName = req.body.fileName;
+//     const mimetype = mime.getType(fileName);
+
+//     res.headers["Content-Disposition"] = "attachment; filename={}".format(
+//       attachments.fileName
+//     );
+//     res.mimetype = mimetype;
+
+//     res.download(path, fileName, function (data, err) {
+//       if (err) {
+//         console.log(err);
+//       }
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     return createResponseData(
+//       res,
+//       {},
+//       httpStatus.INTERNAL_SERVER_ERROR,
+//       true,
+//       constant.INTERNAL_SERVER_ERROR
+//     );
+//   }
+// };
+
 module.exports = {
   sendMail,
   getMail,
@@ -284,4 +312,5 @@ module.exports = {
   deleteMail,
   getTrashedMail,
   counter,
+  // downloadAttachment,
 };

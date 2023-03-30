@@ -15,10 +15,10 @@ async function registerValidation(req, res, next) {
       .pattern(
         /^([a-z]+\s)*[a-z]+$/,
         `validation as digits and consecutive spaces not allowed in`
-      )
-      .custom((value, helper) => {
-        return value.charAt(0).toUpperCase() + "" + value.slice(1);
-      }),
+      ),
+    // .custom((value, helper) => {
+    //   return value.charAt(0).toUpperCase() + "" + value.slice(1);
+    // }),
 
     lastName: Joi.string()
       .min(3)
@@ -29,10 +29,10 @@ async function registerValidation(req, res, next) {
       .pattern(
         /^([a-z]+\s)*[a-z]+$/,
         `validation as digits and consecutive spaces not allowed in`
-      )
-      .custom((value, helper) => {
-        return value.charAt(0).toUpperCase() + "" + value.slice(1);
-      }),
+      ),
+    // .custom((value, helper) => {
+    //   return value.charAt(0).toUpperCase() + "" + value.slice(1);
+    // }),
 
     role: Joi.string().valid("user", "admin").trim(),
 
