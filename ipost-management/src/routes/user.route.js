@@ -11,4 +11,6 @@ router.patch(
 
 router.patch("/changePassword/:id", checkToken, userController.changePassword);
 
+router.patch("/logout/:id", checkToken, userController.logout);
+
 module.exports = router;

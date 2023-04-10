@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const httpStatus = require("http-status");
 const { createResponseData } = require("../utils/response");
 const constant = require("../utils/constants");
+const { Users } = require("../models");
 
 const checkToken = async (req, res, next) => {
   try {
@@ -9,31 +10,26 @@ const checkToken = async (req, res, next) => {
     let token = req.headers["authorization"];
     if (token) {
       token = token.split(" ")[1];
-      jwt.verify(token, process.env.SECRET_KEY, (error, valid) => {
-        if (!error) {
-          req.userData = valid;
-          next();
-        } else {
-          return createResponseData(
-            res,
-            {},
-            httpStatus.UNAUTHORIZED,
-            true,
-            constant.TOKEN_NOT_VALID
-          );
-        }
+      const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+
+      const user = await Users.findOne({
+        "authToken.token": token,
+        "authToken.tokenExpiry": { $gt: Date.now() },
       });
-    } else {
-      return createResponseData(
-        res,
-        {},
-        httpStatus.UNAUTHORIZED,
-        true,
-        constant.TOKEN_NOT_VALID
-      );
+
+      if (user) {
+        req.userData = decodedToken;
+        next();
+      }
     }
   } catch (error) {
-    return res.status(httpStatus.NOT_FOUND).json({ Error: error });
+    return createResponseData(
+      res,
+      {},
+      httpStatus.INTERNAL_SERVER_ERROR,
+      true,
+      constant.TOKEN_EXPIRED
+    );
   }
 };
 

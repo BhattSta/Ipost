@@ -1,4 +1,5 @@
 const httpStatus = require("http-status");
+const { createResponseData } = require("../utils/response");
 
 function validateRequest(req, res, next, schema, type = "body") {
   const options = {
@@ -22,9 +23,17 @@ function validateRequest(req, res, next, schema, type = "body") {
   }
 
   if (errorData) {
-    return res
-      .status(httpStatus.UNAUTHORIZED)
-      .json({ errorMessage: errorData.details[0].message });
+    // return res
+    //   .status(httpStatus.UNAUTHORIZED)
+    //   .json({ errorMessage: errorData.details[0].message });
+
+    return createResponseData(
+      res,
+      {},
+      httpStatus.UNAUTHORIZED,
+      true,
+      errorData.details[0].message
+    );
   } else {
     req.body = valueData;
     next();

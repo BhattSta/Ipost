@@ -1,8 +1,5 @@
 const Joi = require("joi");
 const validateRequest = require("../utils/requestValidation");
-const httpStatus = require("http-status");
-const { createResponseData } = require("../utils/response");
-const constant = require("../utils/response");
 
 async function registerValidation(req, res, next) {
   const register = {
@@ -13,7 +10,7 @@ async function registerValidation(req, res, next) {
       // .lowercase()
       .trim()
       .pattern(
-        /^([a-z]+\s)*[a-z]+$/,
+        /^([A-Za-z]+\s)*[A-Za-z]+$/,
         `validation as digits and consecutive spaces not allowed in`
       ),
     // .custom((value, helper) => {
@@ -27,7 +24,7 @@ async function registerValidation(req, res, next) {
       // .lowercase()
       .trim()
       .pattern(
-        /^([a-z]+\s)*[a-z]+$/,
+        /^([A-Za-z]+\s)*[A-Za-z]+$/,
         `validation as digits and consecutive spaces not allowed in`
       ),
     // .custom((value, helper) => {
@@ -43,7 +40,7 @@ async function registerValidation(req, res, next) {
       .lowercase()
       .pattern(
         /^[a-zA-Z0-9]+@(ipost\.com)$/,
-        "validation as suffix it should be @ipost.com only in"
+        "validation as suffix should be @ipost.com only in"
       ),
 
     password: Joi.string()

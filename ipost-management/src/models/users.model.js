@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["user", "admin"],
+      enum: ["user", "admin", "superAdmin"],
       default: "user",
     },
     email: {
@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    token: {
+    authToken: {
       type: Object,
     },
   },

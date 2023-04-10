@@ -12,7 +12,7 @@ const register = async (req, res) => {
     if (!existingUser) {
       const hashedPassword = await bcrypt.hash(password, 10);
       password = hashedPassword;
-      const data = { firstName, lastName, role, email, password };
+      const data = { firstName, lastName, role: "user", email, password };
       const user = new Users(data);
       const createUser = await user.save();
       return createResponseData(
@@ -73,14 +73,18 @@ const login = async (req, res) => {
         userId: user._id,
         userEmail: user.email,
       },
-      process.env.SECRET_KEY
-      // { expiresIn: "5h" }
-      //Date.now + 5 hours
+      process.env.SECRET_KEY,
+      { expiresIn: "5h" }
     );
 
-    // const Token = { token: token, tokenExpiry: "10s" };
-    // user.token = Token;
-    // await user.save();
+    // const date = Date.now()
+    // console.log(new Date(date).toString())
+    // const newdate = date + 5 * (60 * 60 * 1000)
+    // console.log(new Date(newdate).toString())
+    const tokenExpiryTime = Date.now() + 5 * (60 * 60 * 1000);
+    const Token = { token: token, tokenExpiry: tokenExpiryTime };
+    user.authToken = Token;
+    await user.save();
 
     const data = {
       userId: user._id,

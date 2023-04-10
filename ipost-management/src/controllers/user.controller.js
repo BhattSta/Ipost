@@ -106,7 +106,37 @@ const changePassword = async (req, res) => {
   }
 };
 
+const logout = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const logout = await Users.findByIdAndUpdate(
+      { _id: id },
+      { "authToken.tokenExpiry": Date.now() },
+      {
+        new: true,
+      }
+    );
+    // { $unset: { authToken: 1 } }
+    return createResponseData(
+      res,
+      {},
+      httpStatus.OK,
+      false,
+      constant.LOG_OUT_SUCCESS
+    );
+  } catch (error) {
+    return createResponseData(
+      res,
+      {},
+      httpStatus.INTERNAL_SERVER_ERROR,
+      true,
+      constant.INTERNAL_SERVER_ERROR
+    );
+  }
+};
+
 module.exports = {
   updateUserProfile,
   changePassword,
+  logout,
 };

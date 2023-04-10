@@ -2,7 +2,7 @@ module.exports = {
   createResponseData: (res, data, statusCode, isError, message) => {
     const response = {
       data,
-      statusCode,
+      // statusCode,
       isError,
       message: isError ? message : message,
     };

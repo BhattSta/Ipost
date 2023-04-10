@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const { mailValidation } = require("../validations");
-const { mailController } = require("../controllers");
+const { mailController, adminController } = require("../controllers");
 const { checkToken } = require("../middleware/Tokenauth");
 
 const multer = require("multer");
